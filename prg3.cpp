@@ -2,56 +2,34 @@
 
 using namespace std;
 
-class Complex {
-    float real, img;
-
+class Functions {
     public:
 
-    void input() {
-        cout << "Enter the real part : ";
-        cin >> real;
-        cout << "Enter the imaginary part : ";
-        cin >> img;
+    inline int add(int a, int b) {     //inline add function
+        return a + b;
     }
 
-    Complex add(Complex &c1, Complex &c2) {
-        Complex result;
-
-        result.real = c1.real + c2.real;
-        result.img = c1.img + c2.img;
-
-        return result;
+    int multiply(int a, int b = 1) {    //function with default arguments
+        return a * b;
     }
 
-    Complex add(Complex &c) {
-        Complex result;
+    int sub(int a, int b) {     //the subtract functions with function overloading
+        return a - b;
+    }
 
-        result.real = real + c.real;
-        result.img = img + c.img;
-
-        return result;
-}
-
-    void display() {
-
-        cout << real;
-        if(img >= 0) {
-            cout << "+" << img << "i" << endl;
-        } else {
-            cout << img << "i" << endl;
-        }
+    int sub(int a, int b, int c) {
+        return a - b - c;
     }
 };
 
 int main() {
 
-    Complex c1, c2, result1, result2;
-    c1.input();
-    c2.input();
+    Functions a;
 
-    result1 = result1.add(c1, c2);
-    result2 = c1.add(c2);
+    cout << "Additon using inline function : " << a.add(5, 6) << endl;
+    cout << "Multiplication using default arguments : " << a.multiply(4, 7) << endl;
+    cout << "Runtime polymorphism or function overloading 1 : " << a.sub(4, 6) << endl;
+    cout << "Runtime polymorphism or function overloading 2 : " << a.sub(3, 6, 8) << endl;
 
-    result1.display();
-    result2.display();
+    return 0;
 }
